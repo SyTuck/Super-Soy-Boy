@@ -35,9 +35,10 @@ using System.Collections;
 public class SoyBoyController : MonoBehaviour
 {
     public float speed = 14f;
-    public float accel = 6f;
-    public bool isJumping;
     public float jumpSpeed = 8.0f;
+    public float accel = 6.0f;
+    public float airAccel = 3.0f;
+    public bool isJumping;
     public float jumpDurationThreshold = 0.25f;
     
     private Vector2 input;
@@ -69,6 +70,7 @@ public class SoyBoyController : MonoBehaviour
     {
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Jump");
+
         if (input.x > 0f)
         {
             sr.flipX = false;
@@ -108,9 +110,19 @@ public class SoyBoyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        var acceleration = accel;
         var xVelocity = 0f;
-        if (input.x == 0)
+
+        var acceleration = 0.0f;
+        if (PlayerIsOnGround())
+        {
+            acceleration = accel;
+        }
+        else
+        {
+            acceleration = airAccel;
+        }
+
+        if (PlayerIsOnGround() && input.x == 0)
         {
             xVelocity = 0f;
         }
