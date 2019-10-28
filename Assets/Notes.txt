@@ -1,4 +1,4 @@
-Last spot: Page 354 Tweaking Gravity Settings
+Last spot: Page 367 Hooking Up Character Animations
 
 
 //git bash commands
