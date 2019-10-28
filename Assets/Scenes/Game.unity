@@ -497,6 +497,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8243fb212b1dda2418d9429c3942ce70, type: 3}
     m_FontSize: 14
@@ -1162,33 +1164,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1812872774762219371, guid: 3b027fec77dd6c84ca042e0afbde6e2c,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b027fec77dd6c84ca042e0afbde6e2c, type: 3}
---- !u!1 &1812872774804246994 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1812872774762219367, guid: 3b027fec77dd6c84ca042e0afbde6e2c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1812872774804246993}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1812872774804246995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1812872774804246994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69453451fc6acbe488a79c06835dc43a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 14
-  accel: 6
 --- !u!1001 &4157722841114566542
 PrefabInstance:
   m_ObjectHideFlags: 0
