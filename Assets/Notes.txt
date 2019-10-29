@@ -1,4 +1,4 @@
-Last spot: Page 367 Hooking Up Character Animations
+Last spot: Page 371 Building Game Hazards
 
 
 //git bash commands
