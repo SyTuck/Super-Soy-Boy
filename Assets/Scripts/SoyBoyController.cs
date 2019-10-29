@@ -163,7 +163,7 @@ public class SoyBoyController : MonoBehaviour
 
         if (IsWallToLeftOrRight() && !PlayerIsOnGround())
         {
-            animator.SetBool("IsOnWalll", true);
+            animator.SetBool("IsOnWall", true);
         }
     }
 
