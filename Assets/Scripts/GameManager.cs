@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public static int currentLevel;
+
+    private static EditorBuildSettingsScene[] levelList;
+    private static int maxLevel;
+
+
 
     void Awake()
     {
@@ -20,6 +27,12 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+         levelList = EditorBuildSettings.scenes;
+         maxLevel = levelList.Length;
+    }
+
     public void RestartLevel(float delay)
     {
         StartCoroutine(RestartLevelDelay(delay));
@@ -28,7 +41,16 @@ public class GameManager : MonoBehaviour
     private IEnumerator RestartLevelDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene("Game");
+        if (currentLevel < maxLevel)
+        {
+            currentLevel++;
+        }
+        else
+        {
+            currentLevel = 0;
+        }
+        //SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(currentLevel);
     }
 
 
