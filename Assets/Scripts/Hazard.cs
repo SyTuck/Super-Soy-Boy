@@ -17,10 +17,8 @@ public class Hazard : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        Debug.Log("Collision");
         if (coll.transform.tag == "Player")
         {
-            Debug.Log("it's the player");
             var audioSource = GetComponent<AudioSource>();
             if (audioSource != null && deathClip != null)
             {

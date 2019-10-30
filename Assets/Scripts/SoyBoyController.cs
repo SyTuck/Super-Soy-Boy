@@ -41,6 +41,12 @@ public class SoyBoyController : MonoBehaviour
     public bool isJumping;
     public float jumpDurationThreshold = 0.25f;
     public float jump = 14.0f;
+
+    public AudioClip runClip;
+    public AudioClip jumpClip;
+    public AudioClip slideClip;
+
+    private AudioSource audioSource;
     
     private Vector2 input;
     private SpriteRenderer sr;
@@ -58,6 +64,8 @@ public class SoyBoyController : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         width = this.GetComponent<Collider2D>().bounds.extents.x + 0.1f;
         height = this.GetComponent<Collider2D>().bounds.extents.y + 0.2f;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Use this for initialization
@@ -100,8 +108,13 @@ public class SoyBoyController : MonoBehaviour
             if (input.y > 0.0f)
             {
                 isJumping = true;
+                PlayAudioClip(jumpClip);
             }
             animator.SetBool("IsOnWall", false);
+            if ((input.x < 0.0f) || (input.x > 0.0f))
+            {
+                PlayAudioClip(runClip);
+            }
         }
 
         if (jumpDuration > jumpDurationThreshold)
@@ -154,6 +167,7 @@ public class SoyBoyController : MonoBehaviour
             rb.velocity = new Vector2(-GetWallDirection() * speed * 0.75f, rb.velocity.y);
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsOnWall", false);
+            PlayAudioClip(jumpClip);
         }
         else if (!IsWallToLeftOrRight())
         {
@@ -164,6 +178,7 @@ public class SoyBoyController : MonoBehaviour
         if (IsWallToLeftOrRight() && !PlayerIsOnGround())
         {
             animator.SetBool("IsOnWall", true);
+            PlayAudioClip(slideClip);
         }
     }
 
@@ -228,4 +243,14 @@ public class SoyBoyController : MonoBehaviour
             return 0;
         }
     }
+
+    void PlayAudioClip(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            if (!audioSource.isPlaying) audioSource.PlayOneShot(clip);
+        }
+    }
+
+
 }
