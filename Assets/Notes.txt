@@ -1,4 +1,4 @@
-Last spot: Page 371 Building Game Hazards
+Last spot: Page 380 Adding a simple level timer
 
 
 //git bash commands
