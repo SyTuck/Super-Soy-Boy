@@ -9,11 +9,11 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == nmull)
+        if (instance == null)
         {
             instance = this;
         }
-        else if (instnace != this)
+        else if (instance != this)
         {
             Destroy(gameObject);
         }
