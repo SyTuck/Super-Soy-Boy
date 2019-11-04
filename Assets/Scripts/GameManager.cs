@@ -35,12 +35,10 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel(float delay)
     {
-        StartCoroutine(RestartLevelDelay(delay));
+        StartCoroutine(RestartLevelDelay(currentLevel, delay));
     }
-
-    private IEnumerator RestartLevelDelay(float delay)
+    public void NextLevel(float delay)
     {
-        yield return new WaitForSeconds(delay);
         if (currentLevel < maxLevel)
         {
             currentLevel++;
@@ -49,6 +47,13 @@ public class GameManager : MonoBehaviour
         {
             currentLevel = 0;
         }
+        StartCoroutine(RestartLevelDelay(currentLevel, delay));
+    }
+
+    private IEnumerator RestartLevelDelay(int lvl, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
         //SceneManager.LoadScene("Game");
         SceneManager.LoadScene(currentLevel);
     }
