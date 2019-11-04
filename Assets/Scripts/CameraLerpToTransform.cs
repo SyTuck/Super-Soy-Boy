@@ -41,6 +41,12 @@ public class CameraLerpToTransform : MonoBehaviour
     public float maxX;
     public float maxY;
 
+    private void Start()
+    {
+        GameObject plyr = GameObject.FindWithTag("Player");
+        camTarget = plyr.transform;
+    }
+
     void FixedUpdate()
     {
         if (camTarget != null)
